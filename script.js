@@ -124,7 +124,7 @@ document.getElementById("startBtn").onclick = () => {
 
   // 🎵 tocar música (funciona no iPhone por causa do clique)
   const iframe = document.getElementById("player");
-  iframe.src += "&autoplay=1";
+  iframe.src = "https://www.youtube.com/embed/WiinVuzh4DA?autoplay=1&playsinline=1";
 
   setTimeout(() => exploded = true, 300);
   setTimeout(() => formingHeart = true, 1200);
