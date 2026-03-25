@@ -26,8 +26,8 @@ let fadeOut = false;
 const mensagemFinal =
 "Esse site é dedicado a minha princesa, Amandha de Quadros 💚\n\n" + 
 "Eu te amo de uma forma que eu não consigo explicar\n" +
- "Eu sempre vou te amar, não importa o que aconteça\n" +
-  "Voce é a mulher com quem eu sempre sonhei, cada momento com voce parece um sonho do qual eu nunca quero acordar\n\n" +
+"Eu sempre vou te amar, não importa o que aconteça\n" +
+"Voce é a mulher com quem eu sempre sonhei, cada momento com voce parece um sonho do qual eu nunca quero acordar\n\n" +
 "Estou com saudades da minha princesinha💚\n"
 
 // 💚 coração
@@ -57,7 +57,7 @@ function generateHeart() {
   }
 }
 
-// sincronizar partículas (otimizado pra celular)
+// sincronizar partículas
 function syncParticles() {
   particles = [];
 
@@ -120,18 +120,28 @@ animate();
 
 // botão
 document.getElementById("startBtn").onclick = () => {
+
+  // esconder tela inicial
   document.getElementById("tela-inicial").style.display = "none";
 
-  // 🎵 tocar música (funciona no iPhone por causa do clique)
-  const iframe = document.getElementById("player");
-  iframe.src = "https://www.youtube.com/embed/WiinVuzh4DA?autoplay=1&playsinline=1";
+  // tocar música (corrigido para iPhone)
+  const musica = document.getElementById("musica");
+  musica.volume = 0.5;
 
+  musica.play().catch(() => {
+    console.log("Autoplay bloqueado");
+  });
+
+  // animações
   setTimeout(() => exploded = true, 300);
   setTimeout(() => formingHeart = true, 1200);
 
+  // desaparecer coração
   setTimeout(() => fadeOut = true, 5000);
 
+  // mostrar texto
   setTimeout(() => {
     mostrarTextoFinal();
   }, 6500);
+
 };
